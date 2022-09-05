@@ -43,17 +43,17 @@ const Home = () => {
           <p>Choisis ton avatar !</p>
           <div className="home__userInfo__avatar__imageChoice">
             <button type="button" onClick={handleAvatarDown}>
-              <img src="./assets/arrow.png" alt="arrow-left" />
+              <img src="./assets/svgarrow.svg" alt="arrow-left" />
             </button>
             <img src={`./assets/avatars/avatar${avatarId}.png`} alt="avatar" />
             <button type="button" onClick={handleAvatarUp}>
-              <img src="./assets/arrow.png" alt="arrow-right" />
+              <img src="./assets/svgarrow.svg" alt="arrow-right" />
             </button>
           </div>
         </div>
       </div>
       <button className="home__play" type="button" onClick={handlePlayButton}>
-        Jouer
+        JOUER
       </button>
     </div>
   );
