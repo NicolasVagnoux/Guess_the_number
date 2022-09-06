@@ -40,21 +40,41 @@ const Game = () => {
           </ul>
         </div>
         <div className="game__core__userAction">
-          <p className="game__core__userAction__hint">C&aps;est plus !</p>
+          <p className="game__core__userAction__hint">C&apos;est plus !</p>
           <div className="game__core__userAction__numberGrid">
             <div className="game__core__userAction__numberGrid__input">in</div>
             <div className="game__core__userAction__numberGrid__delete">x</div>
-            <div className="game__core__userAction__numberGrid__number1">1</div>
-            <div className="game__core__userAction__numberGrid__number2">2</div>
-            <div className="game__core__userAction__numberGrid__number3">3</div>
-            <div className="game__core__userAction__numberGrid__number4">4</div>
-            <div className="game__core__userAction__numberGrid__number5">5</div>
-            <div className="game__core__userAction__numberGrid__number6">6</div>
-            <div className="game__core__userAction__numberGrid__number7">7</div>
-            <div className="game__core__userAction__numberGrid__number8">8</div>
-            <div className="game__core__userAction__numberGrid__number9">9</div>
-            <div className="game__core__userAction__numberGrid__number0">0</div>
-            <div className="game__core__userAction__numberGrid__validate">V</div>
+            <div className="game__core__userAction__numberGrid__number1">
+              <img src="./assets/numbers/one.png" alt="one" />
+            </div>
+            <div className="game__core__userAction__numberGrid__number2">
+              <img src="./assets/numbers/two.png" alt="two" />
+            </div>
+            <div className="game__core__userAction__numberGrid__number3">
+              <img src="./assets/numbers/three.png" alt="three" />
+            </div>
+            <div className="game__core__userAction__numberGrid__number4">
+              <img src="./assets/numbers/four.png" alt="four" />
+            </div>
+            <div className="game__core__userAction__numberGrid__number5">
+              <img src="./assets/numbers/five.png" alt="five" />
+            </div>
+            <div className="game__core__userAction__numberGrid__number6">
+              <img src="./assets/numbers/six.png" alt="six" />
+            </div>
+            <div className="game__core__userAction__numberGrid__number7">
+              <img src="./assets/numbers/seven.png" alt="seven" />
+            </div>
+            <div className="game__core__userAction__numberGrid__number8">
+              <img src="./assets/numbers/eight.png" alt="eight" />
+            </div>
+            <div className="game__core__userAction__numberGrid__number9">
+              <img src="./assets/numbers/nine.png" alt="nine" />
+            </div>
+            <div className="game__core__userAction__numberGrid__number0">
+              <img src="./assets/numbers/zero.png" alt="zero" />
+            </div>
+            <div className="game__core__userAction__numberGrid__validate">Valider</div>
           </div>
         </div>
       </div>
