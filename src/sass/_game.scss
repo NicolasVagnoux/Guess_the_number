@@ -34,7 +34,7 @@
     &__core {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        width: 80%;
+        width: 60%;
         margin-top: 2rem;
         &__tries, &__userAction {
             margin: auto;
@@ -81,10 +81,11 @@
         &__userAction {
             &__hint {
                 width: 100%;
+                height: 50px;
                 text-align: center;
                 font-size: 2rem;
-                margin-top: 1rem;
-                margin-bottom: 2rem;
+                margin-top: 2rem;
+                margin-bottom: 1rem;
             }
             &__numberGrid {
                 margin: auto;
@@ -102,8 +103,13 @@
                 }
                 &__number1, &__number2, &__number3, &__number4, &__number5, &__number6, &__number7, &__number8, &__number9, &__number0 {
                     width: 60px;
+                    height: 60px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin:auto;
                     color: black;
-                    background-color: rgb(200, 230, 255, 0.8);
+                    background: linear-gradient(120deg, rgba(81,165,227,1) 0%, rgba(91,104,171,1) 67%);
                     text-shadow: none;
                     font-size: 1.8rem;
                     font-weight: 600;
@@ -117,6 +123,7 @@
                     }
                     img {
                         height: 40px;
+                        filter: drop-shadow(0px 0px 4px black);
                     }
                 }
                 &__input {
@@ -124,16 +131,29 @@
                     width: 288px;
                     color: white;
                     text-shadow: 0px 0px 15px black;
-                    font-size: 1.8rem;
+                    font-size: 3rem;
                     font-weight: 600;
+                    transform: translateY(7px);
+                    span {
+                        margin-left: 6px;
+                        font-weight: 300;
+                        transform: translateY(-3px);
+                        animation: typing 1.5s linear infinite;
+                    }
                 }
                 &__delete {
                     grid-area: 1 / 5 / 2 / 6;
                     width: 60px;
+                    height: 60px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin: auto;
                     color: white;
                     text-shadow: 0px 0px 15px black;
                     font-size: 1.8rem;
                     font-weight: 600;
+                    background: linear-gradient(120deg, rgba(81,165,227,1) 0%, rgba(91,104,171,1) 67%);
                     border: 1px solid black;
                     border-radius: 10px;
                     box-shadow: 4px 4px 4px black;
@@ -142,14 +162,23 @@
                         box-shadow: none;
                         transform: translate(4px, 4px);
                     }
+                    img {
+                        height: 40px;
+                        transform: rotate(45deg);
+                        filter: drop-shadow(0px 0px 4px black);
+                    }
                 }
                 &__validate {
                     grid-area: 4 / 1 / 5 / 6;
                     width: 364px;
+                    height: 60px;
+                    margin: auto;
                     color: white;
                     text-shadow: 0px 0px 15px black;
-                    font-size: 1.8rem;
+                    font-size: 2.2rem;
+                    font-family: 'Quicksand';
                     font-weight: 600;
+                    background: linear-gradient(120deg, rgba(81,165,227,1) 0%, rgba(91,104,171,1) 67%);
                     border: 1px solid black;
                     border-radius: 10px;
                     box-shadow: 4px 4px 4px black;
@@ -162,4 +191,20 @@
             }
         }
     }
+
+    @keyframes typing {
+        0% {
+            opacity: 1;
+        }
+        49% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+
 }
