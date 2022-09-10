@@ -1,22 +1,36 @@
 /* eslint-disable no-unused-vars */
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 
 import CurrentUserContext from '../contexts/CurrentUser';
 
 const Game = () => {
+  //Gets user info from the context
   const { name, avatar } = useContext(CurrentUserContext);
 
+  //Defines a new random number at each page loading
   const [randomNumber, setRandomNumber] = useState<number>(0);
   useEffect(() => {
     setRandomNumber(Math.floor(Math.random() * 100) + 1);
   }, []);
 
+  //Array containing the differents tries + count of the number of tries
   const [tries, setTries] = useState<Array<Array<number | string>>>([]);
   const [nbTries, setNbTries] = useState<number>(1);
 
+  //Number chosen by the user (string)
   const [userNumberStr, setUserNumberStr] = useState<string>('');
 
+  //Hint
   const [hint, setHint] = useState<string>('-');
+
+  //State activated when you win
+  const [victory, setVictory] = useState<boolean>(false);
+
+  //Auto scrolling to the bottom of the tries list
+  const bottomRef = useRef<null | HTMLDivElement>(null);
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [nbTries]);
 
   const handleValidation = () => {
     const userNumber = Number(userNumberStr);
@@ -30,8 +44,9 @@ const Game = () => {
       tries.push([nbTries, userNumber, "C'est moins !"]);
     }
     if (userNumber === randomNumber) {
-      setHint('Bravo !');
+      setHint(`Bravo, le nombre secret était ${randomNumber} !`);
       tries.push([nbTries, userNumber, 'Bravo !']);
+      setVictory(true);
     }
     console.log(tries);
     setUserNumberStr('');
@@ -63,6 +78,7 @@ const Game = () => {
                   <span>{oneTry[2]}</span>
                 </li>
               ))}
+            <div ref={bottomRef} />
           </ul>
         </div>
         <div className="game__core__userAction">
@@ -70,7 +86,7 @@ const Game = () => {
           <div className="game__core__userAction__numberGrid">
             <div className="game__core__userAction__numberGrid__input">
               {userNumberStr && userNumberStr}
-              <span>|</span>
+              {!victory && <span>|</span>}
             </div>
             <button
               onClick={() => setUserNumberStr('')}
@@ -138,13 +154,20 @@ const Game = () => {
               className="game__core__userAction__numberGrid__number0">
               <img src="./assets/numbers/zero.png" alt="zero" />
             </button>
-            <button
-              onClick={handleValidation}
-              type="button"
-              className="game__core__userAction__numberGrid__validate">
-              Valider
-            </button>
+            {!victory && (
+              <button
+                onClick={handleValidation}
+                type="button"
+                className="game__core__userAction__numberGrid__validate">
+                Valider
+              </button>
+            )}
           </div>
+          {victory && (
+            <button className="game__core__userAction__showScore" type="button">
+              Voir mon score
+            </button>
+          )}
         </div>
       </div>
     </div>

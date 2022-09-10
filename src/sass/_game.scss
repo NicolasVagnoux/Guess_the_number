@@ -34,7 +34,7 @@
     &__core {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        width: 60%;
+        width: 70%;
         margin-top: 2rem;
         &__tries, &__userAction {
             margin: auto;
@@ -59,6 +59,8 @@
             }
             &__tableList {
                 margin-top: 20px;
+                height: 370px;
+                overflow: auto;
                 li {
                     display: grid;
                     grid-template-columns: 1fr 1.5fr 1fr;
@@ -189,6 +191,28 @@
                     }
                 }
             }
+            &__showScore {
+                width: 80%;
+                height: 60px;
+                margin-top: 0rem;
+                margin-left: 10%;
+                margin-right: 10%;
+                color: white;
+                text-shadow: 0px 0px 15px black;
+                font-size: 2.2rem;
+                font-family: 'Quicksand';
+                font-weight: 600;
+                background: linear-gradient(120deg, rgba(81,165,227,1) 0%, rgba(91,104,171,1) 67%);
+                border: 1px solid black;
+                border-radius: 10px;
+                box-shadow: 4px 4px 4px black;
+                animation: winAnimation 2s linear infinite;
+                cursor: pointer;
+                &:active {
+                    box-shadow: none;
+                    transform: translate(4px, 4px);
+                }
+            }
         }
     }
 
@@ -204,6 +228,24 @@
         }
         100% {
             opacity: 0;
+        }
+    }
+
+    @keyframes winAnimation {
+        0% {
+            transform: scale(0.97);
+        }
+        25% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.03);
+        }
+        75% {
+            transform: scale(1);
+        }
+        100% {
+            transform: scale(0.97);
         }
     }
 
