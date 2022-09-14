@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useContext, useEffect, useRef, useState } from 'react';
+import { NavigateFunction, useNavigate } from 'react-router-dom';
 
 import CurrentUserContext from '../contexts/CurrentUser';
 
@@ -32,6 +33,7 @@ const Game = () => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [nbTries]);
 
+  //Function to handle input validation
   const handleValidation = () => {
     const userNumber = Number(userNumberStr);
     setNbTries(nbTries + 1);
@@ -48,8 +50,20 @@ const Game = () => {
       tries.push([nbTries, userNumber, 'Bravo !']);
       setVictory(true);
     }
-    console.log(tries);
     setUserNumberStr('');
+  };
+
+  //Navigation function
+  const navigate: NavigateFunction = useNavigate();
+
+  //Function to handle score recording and navigation to leaderboard
+  const handleScoreRecording = () => {
+    console.log({
+      userName: name,
+      avatar: avatar,
+      nbTries: nbTries - 1,
+    });
+    navigate('/leaderboard');
   };
 
   return (
@@ -164,7 +178,10 @@ const Game = () => {
             )}
           </div>
           {victory && (
-            <button className="game__core__userAction__showScore" type="button">
+            <button
+              onClick={handleScoreRecording}
+              className="game__core__userAction__showScore"
+              type="button">
               Voir mon score
             </button>
           )}
