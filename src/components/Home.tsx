@@ -1,26 +1,60 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
+import { NavigateFunction, useNavigate } from 'react-router-dom';
 
-import CurrentTestContext from '../contexts/CurrentTest';
 import CurrentUserContext from '../contexts/CurrentUser';
 
 const Home = () => {
-  const { firstname } = useContext(CurrentUserContext);
-  const { numberClick } = useContext(CurrentTestContext);
+  const [avatarId, setAvatarId] = useState<number>(1);
+  const { name, setName, setAvatar } = useContext(CurrentUserContext);
+  const navigate: NavigateFunction = useNavigate();
+
+  const handleAvatarUp = () => {
+    avatarId === 15 ? setAvatarId(1) : setAvatarId(avatarId + 1);
+  };
+
+  const handleAvatarDown = () => {
+    avatarId === 1 ? setAvatarId(15) : setAvatarId(avatarId - 1);
+  };
+
+  const handlePlayButton = () => {
+    setAvatar(`./assets/avatars/avatar${avatarId}.png`);
+    navigate('/game');
+  };
 
   return (
     <div className="home">
-      {firstname && <h2>Bienvenue, {firstname}</h2>}
-      {numberClick > 0 && <h3>Vous avez cliqué {numberClick} fois</h3>}
-      <p>Ce projet front doit être exécuté en parallèle du projet back et admin.</p>
-      Il vous permettra d&apos;avoir un modèle d&apos;exemple pour tous ces sujets :
-      <ul>
-        <li>React</li>
-        <li>Context</li>
-        <li>Cookie</li>
-        <li>TypeScript</li>
-        <li>Login/Logout</li>
-        <li>Lien avec React Admin</li>
-      </ul>
+      <h1 className="home__title">Guess the number</h1>
+      <p className="home__description">
+        Bienvenue sur Guess the number, un jeu dans lequel, pour gagner, vous devez...
+        deviner le nombre !
+      </p>
+      <div className="home__userInfo">
+        <form className="home__userInfo__name">
+          <label htmlFor="userName">Quel est ton nom ?</label>
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            name="userName"
+            id="userName"
+          />
+        </form>
+        <div className="home__userInfo__avatar">
+          <p>Choisis ton avatar !</p>
+          <div className="home__userInfo__avatar__imageChoice">
+            <button type="button" onClick={handleAvatarDown}>
+              <img src="./assets/svgarrow.svg" alt="arrow-left" />
+            </button>
+            <img src={`./assets/avatars/avatar${avatarId}.png`} alt="avatar" />
+            <button type="button" onClick={handleAvatarUp}>
+              <img src="./assets/svgarrow.svg" alt="arrow-right" />
+            </button>
+          </div>
+        </div>
+      </div>
+      <button className="home__play" type="button" onClick={handlePlayButton}>
+        JOUER
+      </button>
     </div>
   );
 };

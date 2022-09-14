@@ -1,0 +1,154 @@
+.home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100vw;
+    gap: 3rem;
+    background: rgb(81,165,227);
+    background: linear-gradient(120deg, rgba(81,165,227,1) 0%, rgba(91,104,171,1) 67%);
+    font-family: 'Quicksand';
+    color: white;
+    text-shadow: 0px 0px 10px black;
+    &__title {
+        font-family: 'Bungee';
+        font-size: 6rem;
+        line-height: 1.2;
+        text-align: center;
+        color: white;
+        text-shadow: 0px 0px 10px black;
+        margin-bottom: 2rem;
+        animation: titleAnimation 2s linear infinite;
+        @media screen and (max-width: 850px) {
+            margin-top: 3rem;
+            font-size: 4rem;
+        }
+    }
+    &__description {
+        width: 60%;
+        font-size: 1.8rem;
+        text-align: center;
+    }
+    &__userInfo {
+        display: flex;
+        justify-content: space space-around;
+        align-items: flex-start;
+        width: 70%;
+        @media screen and (max-width: 850px) {
+            flex-direction: column;
+            gap: 2rem;
+        }
+        &__name {
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            margin-top: 0;
+            label {
+                font-size: 1.8rem;
+                margin-bottom: 20px;
+            }
+            input {
+              width: 300px;  
+              height: 50px;
+              box-shadow: 0px 0px 10px black;
+              border: none;
+              border-radius: 6px;
+              font-size: 1.6rem;
+              padding-left: 10px;
+              font-family: 'Quicksand';
+              font-weight: 600;
+              background-color: rgb(200, 230, 255, 0.8)
+            }
+        }
+        &__avatar {
+            margin:auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 20px;
+            p {
+                font-size: 1.8rem;
+                text-align: center;
+            }
+            &__imageChoice {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 20px;
+                &>img {
+                    width: 120px;
+                    border-radius: 60px;
+                    box-shadow: 0px 0px 10px black;
+                }
+                button {
+                    background-color: rgb(0, 0, 0, 0);
+                    border: none;
+                    font-size: 2.5rem;
+                    color: white;
+                    cursor: pointer;
+                    width: 30px;
+                    height: 30px;
+                    &>img {
+                        width: 30px;
+                        height: 30px;
+                        filter: drop-shadow(0px 0px 4px black);
+                        
+                    }
+                }
+                button:nth-child(1) > img {
+                    transform: rotate(-90deg);
+                }
+                button:nth-child(3) > img {
+                    transform: rotate(90deg);
+                }
+            }
+        }
+    }
+    &__play {
+        margin-bottom: 10px;
+        width: 250px;
+        height: 50px;
+        background-color: rgb(50, 120, 180);
+        font-family: 'Bungee';
+        line-height: 1;
+        letter-spacing: 2px;
+        color: white;
+        text-shadow: 0px 0px 15px black;
+        font-size: 1.8rem;
+        font-weight: 600;
+        border-radius: 10px;
+        border: 2px solid black;
+        box-shadow: 4px 4px 4px black;
+        cursor: pointer;
+        &:active {
+            box-shadow: none;
+            transform: translate(4px, 4px);
+        }
+        @media screen and (max-width: 850px) {
+            margin-bottom: 3rem;
+        }
+    }
+
+@keyframes titleAnimation {
+    0% {
+        transform: scale(0.97);
+    }
+    25% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.03);
+    }
+    75% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0.97);
+    }
+}
+
+}
