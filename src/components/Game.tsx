@@ -1,8 +1,10 @@
 /* eslint-disable no-unused-vars */
+import axios from 'axios';
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 
 import CurrentUserContext from '../contexts/CurrentUser';
+import ILeaderboard from '../interfaces/ILeaderboard';
 
 const Game = () => {
   //Gets user info from the context
@@ -57,12 +59,24 @@ const Game = () => {
   const navigate: NavigateFunction = useNavigate();
 
   //Function to handle score recording and navigation to leaderboard
-  const handleScoreRecording = () => {
-    console.log({
-      userName: name,
-      avatar: avatar,
-      nbTries: nbTries - 1,
-    });
+  const handleScoreRecording = async (e: React.FormEvent<HTMLButtonElement>) => {
+    try {
+      e.preventDefault();
+      await axios.post<ILeaderboard>(
+        'http://localhost:8000/api/leaderboard',
+        {
+          username: name,
+          avatar: avatar,
+          score: nbTries - 1,
+        },
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+        },
+      );
+    } catch (err) {
+      console.error(err);
+    }
     navigate('/leaderboard');
   };
 
