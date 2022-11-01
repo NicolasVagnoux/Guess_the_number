@@ -86,7 +86,7 @@ const Game = () => {
         <img src={avatar} alt="avatar" />
         <p>
           Bienvenue <span>{name}</span> ! <br /> Pour gagner, tu dois deviner quel est le
-          nombre secret (compris entre 0 et 100) ! C&apos;est parti ! {randomNumber}
+          nombre secret (compris entre 0 et 100) ! C&apos;est parti !
         </p>
       </div>
       <div className="game__core">
