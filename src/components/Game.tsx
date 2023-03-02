@@ -30,7 +30,7 @@ const Game = () => {
   const [victory, setVictory] = useState<boolean>(false);
 
   //State to handle the status of the POST query
-  const [status, setStatus] = useState<string>("");
+  const [status, setStatus] = useState<string>('');
 
   //Auto scrolling to the bottom of the tries list
   const bottomRef = useRef<null | HTMLDivElement>(null);
@@ -64,7 +64,7 @@ const Game = () => {
   //Function to handle score recording and navigation to leaderboard
   const handleScoreRecording = async (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    setStatus("Pending");
+    setStatus('Pending');
     try {
       await axios.post<ILeaderboard>(
         `${import.meta.env.VITE_API_URL}/api/leaderboard`,
@@ -78,11 +78,11 @@ const Game = () => {
           headers: { 'Content-Type': 'application/json' },
         },
       );
-      setStatus("OK");
+      setStatus('OK');
       navigate('/leaderboard');
     } catch (err) {
       console.error(err);
-      setStatus("Error");
+      setStatus('Error');
     }
   };
 
@@ -211,12 +211,14 @@ const Game = () => {
           )}
         </div>
       </div>
-      {(status && status !== "OK") && 
-        <div className='game__scoreLoading'>
-          {status === "Pending" && <p>Ajout de votre score en cours, veuillez patienter...</p>}
-          {status === "Erreur" && <p>Une erreur est survenue...</p>}
+      {status && status !== 'OK' && (
+        <div className="game__scoreLoading">
+          {status === 'Pending' && (
+            <p>Ajout de votre score en cours, veuillez patienter...</p>
+          )}
+          {status === 'Erreur' && <p>Une erreur est survenue...</p>}
         </div>
-      }
+      )}
     </div>
   );
 };
