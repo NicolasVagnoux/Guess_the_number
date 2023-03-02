@@ -12,7 +12,7 @@ const Leaderboard = () => {
   //Function to get leaderboard from database
   useEffect(() => {
     const getLeaderboard = async () => {
-      const { data } = await axios.get('http://localhost:8000/api/leaderboard');
+      const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/api/leaderboard`);
       setLeaderboardList(data);
     };
     getLeaderboard();
