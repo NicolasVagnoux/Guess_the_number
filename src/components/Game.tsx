@@ -42,7 +42,7 @@ const Game = () => {
   const topRef = useRef<null | HTMLDivElement>(null);
   useEffect(() => {
     topRef.current?.scrollIntoView();
-  }, []);
+  }, []); 
 
   //Function to handle input validation
   const handleValidation = () => {
