@@ -38,6 +38,12 @@ const Game = () => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [nbTries]);
 
+  //Auto scrolling to the top on page loading
+  const topRef = useRef<null | HTMLDivElement>(null);
+  useEffect(() => {
+    topRef.current?.scrollIntoView();
+  }, []);
+
   //Function to handle input validation
   const handleValidation = () => {
     const userNumber = Number(userNumberStr);
@@ -92,6 +98,7 @@ const Game = () => {
 
   return (
     <div className="game">
+      <div ref={topRef} />
       <div className="game__intro">
         <img src={avatar} alt="avatar" />
         <p>
