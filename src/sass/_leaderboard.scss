@@ -5,8 +5,11 @@
     align-items: center;
     min-height: 100vh;
     width: 100vw;
-    background: rgb(81,165,227);
-    background: linear-gradient(120deg, rgba(81,165,227,1) 0%, rgba(91,104,171,1) 67%);
+    // background: rgb(81,165,227);
+    // background: linear-gradient(120deg, rgba(81,165,227,1) 0%, rgba(91,104,171,1) 67%);
+    background-image: linear-gradient(120deg, rgba(81,165,227,0.4), rgba(91,104,171,0.4)), url("./assets/game-bg.png");
+    background-size: cover;
+    background-position: center;
     font-family: 'Quicksand';
     color: white;
     text-shadow: 0px 0px 10px black;
@@ -60,14 +63,14 @@
                 box-sizing: border-box;
                 border: 1px solid black;
                 box-shadow: 0px 0px 10px black;
-                background: linear-gradient(170deg, rgba(81,165,227,1) 0%, rgba(91,104,171,1) 67%);
+                background: linear-gradient(170deg, rgba(81,165,227,0.85) 0%, rgba(91,104,171,0.85) 67%);
             }
             &__score {
                 width: 90%;
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                background: linear-gradient(170deg, rgba(81,165,227,1) 0%, rgba(91,104,171,1) 67%);
+                background: linear-gradient(170deg, rgba(81,165,227,0.85) 0%, rgba(91,104,171,0.85) 67%);
                 font-size: 2rem;
                 box-shadow: 0px 0px 10px black;
                 border-top-left-radius: 30px;
